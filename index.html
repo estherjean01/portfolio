@@ -3,715 +3,126 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鍾爾晉 · 個人履歷</title>
+<title>鍾爾晋 · 個人履歷</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;900&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #1a1a2e;
-    --paper: #f5f0e8;
-    --teal: #0d9488;
-    --teal-light: #ccfbf1;
-    --amber: #f59e0b;
-    --amber-light: #fef3c7;
-    --coral: #f97316;
-    --muted: #6b7280;
-    --border: #d1c9b8;
-    --card: #fdfaf5;
+    --ink: #1a1a2e; --paper: #f5f0e8; --teal: #0d9488;
+    --teal-light: #ccfbf1; --amber: #f59e0b; --amber-light: #fef3c7;
+    --muted: #6b7280; --border: #d1c9b8; --card: #fdfaf5;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans TC', sans-serif; background: var(--paper); color: var(--ink); overflow-x: hidden; }
 
-  body {
-    font-family: 'Noto Sans TC', sans-serif;
-    background: var(--paper);
-    color: var(--ink);
-    overflow-x: hidden;
-  }
-
-  /* ─── NOISE TEXTURE OVERLAY ─── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 999;
-    opacity: 0.4;
-  }
-
-  /* ─── NAV ─── */
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 16px 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(245,240,232,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 16px 48px; display: flex; justify-content: space-between; align-items: center;
+    background: rgba(245,240,232,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
   }
-
-  .nav-logo {
-    font-family: 'Space Mono', monospace;
-    font-size: 13px;
-    color: var(--teal);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    transition: color 0.2s;
-    position: relative;
-  }
-
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px; left: 0;
-    width: 0; height: 1px;
-    background: var(--teal);
-    transition: width 0.2s;
-  }
-
+  .nav-logo { font-family: 'Space Mono', monospace; font-size: 13px; color: var(--teal); letter-spacing: 2px; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--teal); }
-  .nav-links a:hover::after { width: 100%; }
 
-  /* ─── HERO ─── */
   .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 120px 80px 80px;
-    gap: 64px;
-    position: relative;
-    overflow: hidden;
+    min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; padding: 120px 80px 80px; gap: 64px;
   }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    right: -100px; top: -100px;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(13,148,136,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
   .hero-tag {
-    display: inline-block;
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--teal);
-    border: 1px solid var(--teal);
-    padding: 4px 12px;
-    margin-bottom: 24px;
-    animation: fadeUp 0.6s ease both;
-  }
-
-  .hero-name {
-    font-family: 'Noto Serif TC', serif;
-    font-size: clamp(48px, 6vw, 80px);
-    font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -1px;
-    animation: fadeUp 0.6s 0.1s ease both;
-  }
-
-  .hero-name span {
-    color: var(--teal);
-    display: block;
-  }
-
-  .hero-sub {
-    font-size: 16px;
-    color: var(--muted);
-    line-height: 1.8;
-    margin-top: 20px;
-    max-width: 480px;
-    animation: fadeUp 0.6s 0.2s ease both;
-  }
-
-  .hero-cta {
-    display: flex;
-    gap: 16px;
-    margin-top: 40px;
-    animation: fadeUp 0.6s 0.3s ease both;
-  }
-
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--teal);
-    color: white;
-    padding: 12px 28px;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    transition: all 0.2s;
-    cursor: pointer;
-    border: none;
-  }
-
-  .btn-primary:hover {
-    background: #0f766e;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(13,148,136,0.3);
-  }
-
-  .btn-outline {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    border: 1.5px solid var(--ink);
-    color: var(--ink);
-    padding: 12px 28px;
-    font-size: 14px;
-    font-weight: 500;
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    transition: all 0.2s;
-  }
-
-  .btn-outline:hover {
-    background: var(--ink);
-    color: var(--paper);
-  }
-
-  .hero-right {
-    position: relative;
-    animation: fadeUp 0.6s 0.2s ease both;
-  }
-
-  .hero-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 40px;
-    position: relative;
-  }
-
-  .hero-card::before {
-    content: '';
-    position: absolute;
-    top: 8px; left: 8px;
-    right: -8px; bottom: -8px;
-    border: 1px solid var(--teal);
-    z-index: -1;
-  }
-
-  .stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-top: 0;
-  }
-
-  .stat-item {
-    padding: 20px;
-    background: var(--paper);
-    border-left: 3px solid var(--teal);
-  }
-
-  .stat-num {
-    font-family: 'Space Mono', monospace;
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--teal);
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 12px;
-    color: var(--muted);
-    margin-top: 6px;
-    line-height: 1.5;
-  }
-
-  .hero-quote {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 15px;
-    color: var(--muted);
-    margin-bottom: 32px;
-    padding-left: 16px;
-    border-left: 3px solid var(--amber);
-    line-height: 1.8;
-    font-style: italic;
-  }
-
-  /* ─── SECTIONS ─── */
-  section {
-    padding: 100px 80px;
-    border-top: 1px solid var(--border);
-  }
-
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 20px;
-    margin-bottom: 64px;
-  }
-
-  .section-num {
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    color: var(--teal);
-    letter-spacing: 2px;
-  }
-
-  .section-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 36px;
-    font-weight: 900;
-    letter-spacing: -0.5px;
-  }
-
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-    margin-left: 16px;
-  }
-
-  /* ─── TIMELINE ─── */
-  .timeline {
-    position: relative;
-    max-width: 900px;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 140px; top: 0; bottom: 0;
-    width: 1px;
-    background: var(--border);
-  }
-
-  .timeline-item {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 48px;
-    margin-bottom: 48px;
-    position: relative;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.5s ease;
-  }
-
-  .timeline-item.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: 133px; top: 8px;
-    width: 14px; height: 14px;
-    border-radius: 50%;
-    background: var(--paper);
-    border: 2px solid var(--teal);
-  }
-
-  .timeline-date {
-    text-align: right;
-    padding-top: 4px;
-  }
-
-  .timeline-year {
-    font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    color: var(--teal);
-    letter-spacing: 1px;
-  }
-
-  .timeline-period {
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 4px;
-  }
-
-  .timeline-content {
-    padding-left: 0;
-  }
-
-  .timeline-role {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-
-  .timeline-company {
-    font-size: 13px;
-    color: var(--teal);
-    font-weight: 500;
-    margin-bottom: 12px;
-    letter-spacing: 0.3px;
-  }
-
-  .timeline-desc {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.8;
-  }
-
-  .timeline-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 12px;
-  }
-
-  .tag {
-    font-size: 11px;
-    padding: 3px 10px;
-    background: var(--teal-light);
-    color: var(--teal);
-    font-family: 'Space Mono', monospace;
-    letter-spacing: 0.5px;
-  }
-
-  .tag-amber {
-    background: var(--amber-light);
-    color: #b45309;
-  }
-
-  /* ─── STRENGTHS ─── */
-  .strengths-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
-  }
-
-  .strength-card {
-    padding: 32px 24px;
-    border: 1px solid var(--border);
-    background: var(--card);
-    position: relative;
-    overflow: hidden;
-    cursor: default;
-    transition: all 0.3s;
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  .strength-card.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .strength-card:nth-child(1) { transition-delay: 0s; }
-  .strength-card:nth-child(2) { transition-delay: 0.1s; }
-  .strength-card:nth-child(3) { transition-delay: 0.2s; }
-  .strength-card:nth-child(4) { transition-delay: 0.3s; }
-  .strength-card:nth-child(5) { transition-delay: 0.4s; }
-
-  .strength-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--teal);
-    transform: scaleX(0);
-    transition: transform 0.3s;
-  }
-
-  .strength-card:hover {
-    border-color: var(--teal);
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(13,148,136,0.1);
-  }
-
-  .strength-card:hover::before {
-    transform: scaleX(1);
-  }
-
-  .strength-rank {
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    color: var(--teal);
-    margin-bottom: 16px;
-    letter-spacing: 2px;
-  }
-
-  .strength-name {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 22px;
-    font-weight: 900;
-    margin-bottom: 12px;
-    line-height: 1.2;
-  }
-
-  .strength-desc {
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  /* ─── RESEARCH ─── */
-  .research-card {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 64px;
-    position: relative;
-    overflow: hidden;
-    max-width: 900px;
-  }
-
-  .research-card::before {
-    content: '';
-    position: absolute;
-    right: -80px; top: -80px;
-    width: 320px; height: 320px;
-    border: 1px solid rgba(245,240,232,0.1);
-    border-radius: 50%;
-  }
-
-  .research-card::after {
-    content: '';
-    position: absolute;
-    right: -40px; top: -40px;
-    width: 200px; height: 200px;
-    border: 1px solid rgba(245,240,232,0.06);
-    border-radius: 50%;
-  }
-
-  .research-eyebrow {
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: var(--teal);
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-
-  .research-title {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 28px;
-    font-weight: 900;
-    line-height: 1.4;
-    margin-bottom: 24px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .research-body {
-    font-size: 14px;
-    color: rgba(245,240,232,0.7);
-    line-height: 1.9;
-    position: relative;
-    z-index: 1;
-    max-width: 600px;
-  }
-
-  .research-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 28px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .research-chip {
-    font-size: 12px;
-    padding: 6px 14px;
-    border: 1px solid rgba(13,148,136,0.5);
-    color: var(--teal);
-    letter-spacing: 0.5px;
-  }
-
-  /* ─── ABOUT ─── */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-
-  .about-text {
-    font-size: 15px;
-    line-height: 2;
-    color: #374151;
-  }
-
-  .about-text p + p {
-    margin-top: 20px;
-  }
-
-  .about-highlight {
-    background: linear-gradient(180deg, transparent 60%, rgba(13,148,136,0.2) 60%);
-    font-weight: 600;
-  }
-
-  .values-list {
-    list-style: none;
-    margin-top: 32px;
-  }
-
-  .values-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 14px;
-    line-height: 1.7;
-  }
-
-  .values-icon {
-    width: 28px; height: 28px;
-    background: var(--teal);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .cert-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 32px;
-  }
-
-  .cert-item {
-    padding: 16px 20px;
-    border: 1px solid var(--border);
-    background: var(--card);
-  }
-
-  .cert-name {
-    font-size: 13px;
-    font-weight: 600;
-  }
-
-  .cert-type {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    color: var(--teal);
-    letter-spacing: 1px;
-    margin-top: 4px;
-  }
-
-  /* ─── CONTACT ─── */
-  .contact-section {
-    background: var(--card);
-  }
-
-  .contact-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-
-  .contact-big {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 48px;
-    font-weight: 900;
-    line-height: 1.2;
-    letter-spacing: -1px;
-  }
-
-  .contact-big span {
-    color: var(--teal);
-  }
-
-  .contact-items {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 20px 24px;
-    border: 1px solid var(--border);
-    background: var(--paper);
-    text-decoration: none;
-    color: var(--ink);
-    transition: all 0.2s;
-  }
-
-  .contact-item:hover {
-    border-color: var(--teal);
-    transform: translateX(4px);
-  }
-
-  .contact-icon {
-    width: 40px; height: 40px;
-    background: var(--teal);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    flex-shrink: 0;
-  }
-
-  .contact-label {
-    font-size: 11px;
-    color: var(--muted);
-    font-family: 'Space Mono', monospace;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-
-  .contact-value {
-    font-size: 14px;
-    font-weight: 500;
-    margin-top: 2px;
-  }
-
-  /* ─── FOOTER ─── */
-  footer {
-    padding: 32px 80px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 1px;
-  }
-
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+    display: inline-block; font-family: 'Space Mono', monospace; font-size: 11px;
+    letter-spacing: 3px; color: var(--teal); border: 1px solid var(--teal);
+    padding: 4px 12px; margin-bottom: 24px; animation: fadeUp 0.6s ease both;
+  }
+  .hero-name { font-family: 'Noto Serif TC', serif; font-size: clamp(48px,6vw,80px); font-weight: 900; line-height: 1.05; animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-name span { color: var(--teal); display: block; }
+  .hero-sub { font-size: 16px; color: var(--muted); line-height: 1.8; margin-top: 20px; animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-cta { display: flex; gap: 16px; margin-top: 40px; animation: fadeUp 0.6s 0.3s ease both; }
+  .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--teal); color: white; padding: 12px 28px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+  .btn-primary:hover { background: #0f766e; transform: translateY(-2px); }
+  .btn-outline { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--ink); color: var(--ink); padding: 12px 28px; font-size: 14px; text-decoration: none; transition: all 0.2s; }
+  .btn-outline:hover { background: var(--ink); color: var(--paper); }
+
+  .hero-card { background: var(--card); border: 1px solid var(--border); padding: 40px; position: relative; animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-card::before { content: ''; position: absolute; top: 8px; left: 8px; right: -8px; bottom: -8px; border: 1px solid var(--teal); z-index: -1; }
+  .hero-quote { font-family: 'Noto Serif TC', serif; font-size: 15px; color: var(--muted); margin-bottom: 32px; padding-left: 16px; border-left: 3px solid var(--amber); line-height: 1.8; font-style: italic; }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat-item { padding: 20px; background: var(--paper); border-left: 3px solid var(--teal); }
+  .stat-num { font-family: 'Space Mono', monospace; font-size: 28px; font-weight: 700; color: var(--teal); }
+  .stat-label { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+  section { padding: 100px 80px; border-top: 1px solid var(--border); }
+  .section-header { display: flex; align-items: baseline; gap: 20px; margin-bottom: 64px; }
+  .section-num { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--teal); letter-spacing: 2px; }
+  .section-title { font-family: 'Noto Serif TC', serif; font-size: 36px; font-weight: 900; }
+  .section-line { flex: 1; height: 1px; background: var(--border); margin-left: 16px; }
+
+  .timeline { position: relative; max-width: 900px; }
+  .timeline::before { content: ''; position: absolute; left: 140px; top: 0; bottom: 0; width: 1px; background: var(--border); }
+  .timeline-item { display: grid; grid-template-columns: 140px 1fr; gap: 48px; margin-bottom: 48px; position: relative; opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
+  .timeline-item.visible { opacity: 1; transform: translateY(0); }
+  .timeline-item::before { content: ''; position: absolute; left: 133px; top: 8px; width: 14px; height: 14px; border-radius: 50%; background: var(--paper); border: 2px solid var(--teal); }
+  .timeline-date { text-align: right; padding-top: 4px; }
+  .timeline-year { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--teal); letter-spacing: 1px; }
+  .timeline-period { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .timeline-role { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .timeline-company { font-size: 13px; color: var(--teal); font-weight: 500; margin-bottom: 12px; }
+  .timeline-desc { font-size: 14px; color: var(--muted); line-height: 1.8; }
+  .timeline-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .tag { font-size: 11px; padding: 3px 10px; background: var(--teal-light); color: var(--teal); font-family: 'Space Mono', monospace; }
+  .tag-amber { background: var(--amber-light); color: #b45309; }
+
+  .strengths-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 16px; }
+  .strength-card { padding: 32px 24px; border: 1px solid var(--border); background: var(--card); position: relative; overflow: hidden; transition: all 0.3s; opacity: 0; transform: translateY(20px); }
+  .strength-card.visible { opacity: 1; transform: translateY(0); }
+  .strength-card:nth-child(1){transition-delay:0s}.strength-card:nth-child(2){transition-delay:0.1s}.strength-card:nth-child(3){transition-delay:0.2s}.strength-card:nth-child(4){transition-delay:0.3s}.strength-card:nth-child(5){transition-delay:0.4s}
+  .strength-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--teal); transform: scaleX(0); transition: transform 0.3s; }
+  .strength-card:hover { border-color: var(--teal); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(13,148,136,0.1); }
+  .strength-card:hover::before { transform: scaleX(1); }
+  .strength-rank { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--teal); margin-bottom: 16px; letter-spacing: 2px; }
+  .strength-name { font-family: 'Noto Serif TC', serif; font-size: 22px; font-weight: 900; margin-bottom: 12px; line-height: 1.2; }
+  .strength-desc { font-size: 12px; color: var(--muted); line-height: 1.7; }
+
+  .research-card { background: var(--ink); color: var(--paper); padding: 64px; position: relative; overflow: hidden; max-width: 900px; }
+  .research-card::before { content: ''; position: absolute; right: -80px; top: -80px; width: 320px; height: 320px; border: 1px solid rgba(245,240,232,0.1); border-radius: 50%; }
+  .research-eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 3px; color: var(--teal); margin-bottom: 20px; }
+  .research-title { font-family: 'Noto Serif TC', serif; font-size: 28px; font-weight: 900; line-height: 1.4; margin-bottom: 24px; position: relative; z-index: 1; }
+  .research-body { font-size: 14px; color: rgba(245,240,232,0.7); line-height: 1.9; position: relative; z-index: 1; max-width: 600px; }
+  .research-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; position: relative; z-index: 1; }
+  .research-chip { font-size: 12px; padding: 6px 14px; border: 1px solid rgba(13,148,136,0.5); color: var(--teal); }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .about-text { font-size: 15px; line-height: 2; color: #374151; }
+  .about-text p + p { margin-top: 20px; }
+  .about-highlight { background: linear-gradient(180deg, transparent 60%, rgba(13,148,136,0.2) 60%); font-weight: 600; }
+  .values-list { list-style: none; margin-top: 32px; }
+  .values-list li { display: flex; align-items: flex-start; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); font-size: 14px; line-height: 1.7; }
+  .values-icon { width: 28px; height: 28px; background: var(--teal); color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; margin-top: 2px; }
+  .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 32px; }
+  .cert-item { padding: 16px 20px; border: 1px solid var(--border); background: var(--card); }
+  .cert-name { font-size: 13px; font-weight: 600; }
+  .cert-type { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--teal); letter-spacing: 1px; margin-top: 4px; }
+
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .contact-big { font-family: 'Noto Serif TC', serif; font-size: 48px; font-weight: 900; line-height: 1.2; }
+  .contact-big span { color: var(--teal); }
+  .contact-items { display: flex; flex-direction: column; gap: 20px; }
+  .contact-item { display: flex; align-items: center; gap: 20px; padding: 20px 24px; border: 1px solid var(--border); background: var(--paper); text-decoration: none; color: var(--ink); transition: all 0.2s; }
+  .contact-item:hover { border-color: var(--teal); transform: translateX(4px); }
+  .contact-icon { width: 40px; height: 40px; background: var(--teal); color: white; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .contact-label { font-size: 11px; color: var(--muted); font-family: 'Space Mono', monospace; letter-spacing: 1px; }
+  .contact-value { font-size: 14px; font-weight: 500; margin-top: 2px; }
+
+  footer { padding: 32px 80px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-family: 'Space Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 1px; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ─── MOBILE ─── */
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
     .nav-links { display: none; }
     .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
-    .hero-right { display: none; }
+    .hero-card { display: none; }
     section { padding: 60px 24px; }
     .strengths-grid { grid-template-columns: 1fr 1fr; }
     .about-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -727,9 +138,8 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="nav-logo">Chung Erh-Chin</div>
+  <div class="nav-logo">CHUNG ERH CHIN</div>
   <ul class="nav-links">
     <li><a href="#experience">工作經歷</a></li>
     <li><a href="#education">學歷</a></li>
@@ -740,50 +150,29 @@
   </ul>
 </nav>
 
-<!-- HERO -->
-<section class="hero" style="border-top: none; padding-top: 120px;">
-  <div class="hero-left">
-    <span class="hero-tag">IT · 教育科技 · 碩士研究生</span>
-    <h1 class="hero-name">
-      鍾爾晉
-      <span>Chung Er-Jin</span>
-    </h1>
-    <p class="hero-sub">
-      系統維護與管理專員，現就讀台南大學數位學習科技系碩士班（在職），
-      致力於結合 IT 技術與教育科技應用。從基層製造業到數位內容產業，
-      帶著<strong>適應力與策略思維</strong>持續成長。
-    </p>
-    <div class="hero-cta">
-      <a href="#experience" class="btn-primary">查看經歷 →</a>
-      <a href="#contact" class="btn-outline">聯絡我</a>
+<section style="border-top:none; padding-top:120px;">
+  <div style="display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:64px;">
+    <div>
+      <span class="hero-tag">IT &middot; 教育科技 &middot; 碩士研究生</span>
+      <h1 class="hero-name">鍾爾晋<span>Chung Erh Chin</span></h1>
+      <p class="hero-sub">系統維護與管理專員，現就讀台南大學數位學習科技系碩士班（在職），致力於結合 IT 技術與教育科技應用。從基層製造業到數位內容產業，帶著<strong>適應力與策略思維</strong>持續成長。</p>
+      <div class="hero-cta">
+        <a href="#experience" class="btn-primary">查看經歷 →</a>
+        <a href="#contact" class="btn-outline">聯絡我</a>
+      </div>
     </div>
-  </div>
-  <div class="hero-right">
     <div class="hero-card">
       <p class="hero-quote">「態度決定高度」<br>— 家庭核心價值</p>
       <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-num">2+</div>
-          <div class="stat-label">年 IT 系統<br>維護經驗</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">4+</div>
-          <div class="stat-label">家公司<br>跨產業歷練</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">TOP5</div>
-          <div class="stat-label">Gallup<br>優勢識別</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">碩士</div>
-          <div class="stat-label">數位學習<br>科技研究</div>
-        </div>
+        <div class="stat-item"><div class="stat-num">2+</div><div class="stat-label">年 IT 系統<br>維護經驗</div></div>
+        <div class="stat-item"><div class="stat-num">4+</div><div class="stat-label">家公司<br>跨產業歷練</div></div>
+        <div class="stat-item"><div class="stat-num">TOP5</div><div class="stat-label">Gallup<br>優勢識別</div></div>
+        <div class="stat-item"><div class="stat-num">碩士</div><div class="stat-label">數位學習<br>科技研究</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-header">
     <span class="section-num">01</span>
@@ -792,83 +181,52 @@
   </div>
   <div class="timeline">
     <div class="timeline-item">
-      <div class="timeline-date">
-        <div class="timeline-year">2023</div>
-        <div class="timeline-period">至今</div>
-      </div>
+      <div class="timeline-date"><div class="timeline-year">2023</div><div class="timeline-period">至今</div></div>
       <div class="timeline-content">
         <div class="timeline-role">資訊人員（系統維護管理）</div>
-        <div class="timeline-company">明光文教事業股份有限公司 · 數位內容產業</div>
-        <div class="timeline-desc">
-          負責系統日常維護與功能新增，確保系統穩定運作。優化系統效能、處理異常問題，並協助前端網頁設計工作，跨足 IT 維護與數位內容開發。
-        </div>
+        <div class="timeline-company">明光文教事業股份有限公司 &middot; 數位內容產業</div>
+        <div class="timeline-desc">負責系統日常維護與功能新增，確保系統穩定運作。優化系統效能、處理異常問題，並協助前端網頁設計工作，跨足 IT 維護與數位內容開發。</div>
         <div class="timeline-tags">
-          <span class="tag">系統維護</span>
-          <span class="tag">前端開發</span>
-          <span class="tag">功能優化</span>
-          <span class="tag-amber tag">數位內容</span>
+          <span class="tag">系統維護</span><span class="tag">前端開發</span><span class="tag">功能優化</span><span class="tag tag-amber">數位內容</span>
         </div>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-date">
-        <div class="timeline-year">2021</div>
-        <div class="timeline-period">2021/5 — 2023/2</div>
-      </div>
+      <div class="timeline-date"><div class="timeline-year">2021</div><div class="timeline-period">2021/5 — 2023/2</div></div>
       <div class="timeline-content">
         <div class="timeline-role">倉帳 / 生管協助</div>
-        <div class="timeline-company">瑩聯輪刷股份有限公司 · 製造業</div>
-        <div class="timeline-desc">
-          運用 ERP 系統進行倉儲管理與庫存控制，跨部門協助生管工作，深入了解生產流程。在原本倉管職務外兼任行政生管，強化部門間溝通協調能力。
-        </div>
+        <div class="timeline-company">瑩聯輪刷股份有限公司 &middot; 製造業</div>
+        <div class="timeline-desc">運用 ERP 系統進行倉儲管理與庫存控制，跨部門協助生管工作，深入了解生產流程，強化部門間溝通協調能力。</div>
         <div class="timeline-tags">
-          <span class="tag">ERP 操作</span>
-          <span class="tag">倉儲管理</span>
-          <span class="tag">生產流程</span>
-          <span class="tag-amber tag">跨部門協作</span>
+          <span class="tag">ERP 操作</span><span class="tag">倉儲管理</span><span class="tag">生產流程</span><span class="tag tag-amber">跨部門協作</span>
         </div>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-date">
-        <div class="timeline-year">2019</div>
-        <div class="timeline-period">2019/9 — 2021/4</div>
-      </div>
+      <div class="timeline-date"><div class="timeline-year">2019</div><div class="timeline-period">2019/9 — 2021/4</div></div>
       <div class="timeline-content">
         <div class="timeline-role">品管人員</div>
-        <div class="timeline-company">開南金屬工業股份有限公司 · 金屬製造業</div>
-        <div class="timeline-desc">
-          負責原料檢驗與成品品質確認，撰寫相關檢驗報告。中途轉換協助倉管部門使用 ERP 系統，新成員到位後順利完成交接。
-        </div>
+        <div class="timeline-company">開南金屬工業股份有限公司 &middot; 金屬製造業</div>
+        <div class="timeline-desc">負責原料檢驗與成品品質確認，撰寫相關檢驗報告。中途協助倉管部門使用 ERP 系統，新成員到位後順利完成交接。</div>
         <div class="timeline-tags">
-          <span class="tag">品質管理</span>
-          <span class="tag">ERP 協助</span>
-          <span class="tag">檢驗報告</span>
+          <span class="tag">品質管理</span><span class="tag">ERP 協助</span><span class="tag">檢驗報告</span>
         </div>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-date">
-        <div class="timeline-year">2018</div>
-        <div class="timeline-period">2018/2 — 2019/9</div>
-      </div>
+      <div class="timeline-date"><div class="timeline-year">2018</div><div class="timeline-period">2018/2 — 2019/9</div></div>
       <div class="timeline-content">
         <div class="timeline-role">廠務助理 / 物料總務</div>
-        <div class="timeline-company">遠炬有限公司 · 塑膠製品製造業</div>
-        <div class="timeline-desc">
-          建立物料管理檔案與庫存管理制度，負責廠區日常事務與發包安排。原應徵廠務助理，後被主管指派協助總務單位，累積跨職能行政經驗。
-        </div>
+        <div class="timeline-company">遠炬有限公司 &middot; 塑膠製品製造業</div>
+        <div class="timeline-desc">建立物料管理檔案與庫存管理制度，負責廠區日常事務與發包安排。原應徵廠務助理，後被主管指派協助總務單位，累積跨職能行政經驗。</div>
         <div class="timeline-tags">
-          <span class="tag">物料管理</span>
-          <span class="tag">庫存控制</span>
-          <span class="tag">行政總務</span>
+          <span class="tag">物料管理</span><span class="tag">庫存控制</span><span class="tag">行政總務</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EDUCATION -->
 <section id="education">
   <div class="section-header">
     <span class="section-num">02</span>
@@ -877,103 +235,77 @@
   </div>
   <div class="timeline">
     <div class="timeline-item">
-      <div class="timeline-date">
-        <div class="timeline-year">2025</div>
-        <div class="timeline-period">至今</div>
-      </div>
+      <div class="timeline-date"><div class="timeline-year">2025</div><div class="timeline-period">至今</div></div>
       <div class="timeline-content">
-        <div class="timeline-role">數位學習科技學系 · 碩士班（在職專班）</div>
+        <div class="timeline-role">數位學習科技學系 &middot; 碩士班（在職專班）</div>
         <div class="timeline-company">國立臺南大學</div>
-        <div class="timeline-desc">
-          研究方向聚焦於 AI 教育應用與對話式機器人。透過 LINE Bot 結合 GPT 模型，設計實驗探究 AI 陪伴角色（教師／同儕／教練）對學生自主學習能力（SRL）的影響。
-        </div>
+        <div class="timeline-desc">研究方向聚焦於 AI 教育應用與對話式機器人，探索科技輔助學習的可能性。</div>
         <div class="timeline-tags">
-          <span class="tag">教育科技</span>
-          <span class="tag">AI 應用研究</span>
-          <span class="tag">自主學習</span>
-          <span class="tag-amber tag">仍就讀中</span>
+          <span class="tag">教育科技</span><span class="tag">AI 應用研究</span><span class="tag tag-amber">仍就讀中</span>
         </div>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-date">
-        <div class="timeline-year">2013</div>
-        <div class="timeline-period">2013/9 — 2017/6</div>
-      </div>
+      <div class="timeline-date"><div class="timeline-year">2013</div><div class="timeline-period">2013/9 — 2017/6</div></div>
       <div class="timeline-content">
-        <div class="timeline-role">資訊管理學系 · 學士</div>
-        <div class="timeline-company">私立長榮大學（最高學歷）</div>
-        <div class="timeline-desc">
-          大學期間成績逐年進步，畢業專題訓練獨立解題與資源整合能力。大四取得 ORACLE-JAVA 及 ERP 規劃師證照，具備資訊管理系統的理論基礎。
-        </div>
+        <div class="timeline-role">資訊管理學系 &middot; 學士</div>
+        <div class="timeline-company">私立長榮大學</div>
+        <div class="timeline-desc">大學期間成績逐年進步，畢業專題訓練獨立解題與資源整合能力。取得 ORACLE-JAVA 及 ERP 規劃師證照。</div>
         <div class="timeline-tags">
-          <span class="tag">資訊管理</span>
-          <span class="tag">ORACLE-JAVA</span>
-          <span class="tag">ERP 規劃師</span>
+          <span class="tag">資訊管理</span><span class="tag">ORACLE-JAVA</span><span class="tag">ERP 規劃師</span>
         </div>
       </div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-date">
-        <div class="timeline-year">2016</div>
-        <div class="timeline-period">2016/9 — 2017/1</div>
-      </div>
+      <div class="timeline-date"><div class="timeline-year">2016</div><div class="timeline-period">2016/9 — 2017/1</div></div>
       <div class="timeline-content">
-        <div class="timeline-role">電子商務系 · 交換生</div>
+        <div class="timeline-role">電子商務系 &middot; 交換生</div>
         <div class="timeline-company">上海東華大學（中國）</div>
-        <div class="timeline-desc">
-          大四把握機會赴上海擔任交換生，接觸不同的學習環境與文化。這段經歷拓展視野，培養跨文化溝通能力，也深刻體會到「主動積極」的重要性，面對陌生環境能快速適應。
-        </div>
+        <div class="timeline-desc">赴上海擔任交換生，接觸不同學習環境與文化，拓展視野，培養跨文化溝通能力。</div>
         <div class="timeline-tags">
-          <span class="tag">跨文化溝通</span>
-          <span class="tag">電子商務</span>
-          <span class="tag-amber tag">海外交換</span>
+          <span class="tag">跨文化溝通</span><span class="tag">電子商務</span><span class="tag tag-amber">海外交換</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- STRENGTHS -->
-<section id="strengths" style="background: #f9f6f0;">
+<section id="strengths" style="background:#f9f6f0;">
   <div class="section-header">
     <span class="section-num">03</span>
     <h2 class="section-title">個人優勢</h2>
     <div class="section-line"></div>
   </div>
-  <p style="font-size: 13px; color: var(--muted); margin-bottom: 40px; font-family: 'Space Mono', monospace; letter-spacing: 0.5px;">
-    GALLUP CLIFTONSTRENGTHS · TOP 5 THEMES · 2018
-  </p>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:40px;font-family:'Space Mono',monospace;letter-spacing:0.5px;">GALLUP CLIFTONSTRENGTHS &middot; TOP 5 THEMES &middot; 2018</p>
   <div class="strengths-grid">
     <div class="strength-card">
       <div class="strength-rank">RANK 01</div>
-      <div class="strength-name">排難<br><small style="font-size:13px; font-weight:400; color:var(--muted);">Problem Solver</small></div>
+      <div class="strength-name">排難<br><small style="font-size:13px;font-weight:400;color:var(--muted)">Problem Solver</small></div>
       <div class="strength-desc">善於發現問題根源，迎難而上。能識別技能差距並主動突破，按期完成目標。</div>
     </div>
     <div class="strength-card">
       <div class="strength-rank">RANK 02</div>
-      <div class="strength-name">體諒<br><small style="font-size:13px; font-weight:400; color:var(--muted);">Empathy</small></div>
+      <div class="strength-name">體諒<br><small style="font-size:13px;font-weight:400;color:var(--muted)">Empathy</small></div>
       <div class="strength-desc">能設身處地體會他人情感，善於察覺團隊動態，以理解與關懷建立信任關係。</div>
     </div>
     <div class="strength-card">
       <div class="strength-rank">RANK 03</div>
-      <div class="strength-name">適應<br><small style="font-size:13px; font-weight:400; color:var(--muted);">Adaptability</small></div>
+      <div class="strength-name">適應<br><small style="font-size:13px;font-weight:400;color:var(--muted)">Adaptability</small></div>
       <div class="strength-desc">活在當下，擁抱變化。面對突發狀況能快速調整，享受每天不同的挑戰。</div>
     </div>
     <div class="strength-card">
       <div class="strength-rank">RANK 04</div>
-      <div class="strength-name">搜集<br><small style="font-size:13px; font-weight:400; color:var(--muted);">Input</small></div>
+      <div class="strength-name">搜集<br><small style="font-size:13px;font-weight:400;color:var(--muted)">Input</small></div>
       <div class="strength-desc">天生好奇，主動蒐集資訊、觀察他人。善於提問、傾聽，並整合多方資源。</div>
     </div>
     <div class="strength-card">
       <div class="strength-rank">RANK 05</div>
-      <div class="strength-name">戰略<br><small style="font-size:13px; font-weight:400; color:var(--muted);">Strategic</small></div>
+      <div class="strength-name">戰略<br><small style="font-size:13px;font-weight:400;color:var(--muted)">Strategic</small></div>
       <div class="strength-desc">快速辨識模式，從多種方案中選出最佳路徑，以創意思維解決複雜問題。</div>
     </div>
   </div>
 </section>
 
-<!-- RESEARCH -->
 <section id="research">
   <div class="section-header">
     <span class="section-num">04</span>
@@ -981,12 +313,9 @@
     <div class="section-line"></div>
   </div>
   <div class="research-card">
-    <div class="research-eyebrow">MASTER'S RESEARCH · 2025 — PRESENT</div>
+    <div class="research-eyebrow">MASTER'S RESEARCH &middot; 2025 — PRESENT</div>
     <h3 class="research-title">AI 聊天機器人<br>於教育場域之應用研究</h3>
-    <p class="research-body">
-      碩士在職專班進行中的研究專案，探索 AI 對話機器人在學習情境中的應用潛力。
-      結合對話式 AI 技術與教育理論，目前仍持續進行中。
-    </p>
+    <p class="research-body">碩士在職專班進行中的研究專案，探索 AI 對話機器人在學習情境中的應用潛力。結合對話式 AI 技術與教育理論，目前仍持續進行中。</p>
     <div class="research-chips">
       <span class="research-chip">LINE Bot</span>
       <span class="research-chip">AI 應用</span>
@@ -996,8 +325,7 @@
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" style="background: #f9f6f0;">
+<section id="about" style="background:#f9f6f0;">
   <div class="section-header">
     <span class="section-num">05</span>
     <h2 class="section-title">關於我</h2>
@@ -1006,79 +334,42 @@
   <div class="about-grid">
     <div>
       <div class="about-text">
-        <p>
-          家庭共有四位成員，父母從小教導我們「態度決定高度」。這句話成為我面對職場挑戰時最重要的信念——即使學歷不是頂尖，<span class="about-highlight">只要保持積極誠懇的態度，願意主動學習、虛心請教</span>，就能找到自己的位置。
-        </p>
-        <p>
-          在求學階段屬於大器晚成型，直到進入長榮大學資管系才找到學習動力，成績逐年進步。大四赴上海東華大學擔任交換生，見識不同的學習環境與文化，體會到主動積極的重要性。
-        </p>
-        <p>
-          畢業後從基層倉管與品管工作做起，逐步跨越製造業到數位內容產業，最終回歸本科 IT 領域。每段工作經歷都加深了對跨部門協作和系統流程的理解。
-        </p>
+        <p>家庭共有四位成員，父母從小教導我們「態度決定高度」。這句話成為我面對職場挑戰時最重要的信念——即使學歷不是頂尖，<span class="about-highlight">只要保持積極誠懇的態度，願意主動學習、虛心請教</span>，就能找到自己的位置。</p>
+        <p>在求學階段屬於大器晚成型，直到進入長榮大學資管系才找到學習動力，成績逐年進步。大四赴上海東華大學擔任交換生，見識不同的學習環境與文化，體會到主動積極的重要性。</p>
+        <p>畢業後從基層倉管與品管工作做起，逐步跨越製造業到數位內容產業，最終回歸本科 IT 領域。每段工作經歷都加深了對跨部門協作和系統流程的理解。</p>
       </div>
-
       <ul class="values-list">
-        <li>
-          <div class="values-icon">✦</div>
-          <div><strong>主動積極</strong> — 不等待機會，主動爭取學習與成長的空間，包含交換生經歷與在職進修。</div>
-        </li>
-        <li>
-          <div class="values-icon">✦</div>
-          <div><strong>跨域整合</strong> — 從製造業倉管到 IT 系統維護，不同產業的歷練成為獨特的系統性思維優勢。</div>
-        </li>
-        <li>
-          <div class="values-icon">✦</div>
-          <div><strong>持續學習</strong> — 在職攻讀碩士，將工作實務與學術研究結合，探索 AI 在教育科技的應用可能。</div>
-        </li>
+        <li><div class="values-icon">✦</div><div><strong>主動積極</strong> — 不等待機會，主動爭取學習與成長的空間，包含交換生經歷與在職進修。</div></li>
+        <li><div class="values-icon">✦</div><div><strong>跨域整合</strong> — 從製造業倉管到 IT 系統維護，不同產業的歷練成為獨特的系統性思維優勢。</div></li>
+        <li><div class="values-icon">✦</div><div><strong>持續學習</strong> — 在職攻讀碩士，將工作實務與學術研究結合，探索 AI 在教育科技的應用可能。</div></li>
       </ul>
     </div>
-
     <div>
-      <h3 style="font-family: 'Noto Serif TC', serif; font-size: 20px; font-weight: 700; margin-bottom: 24px;">證照 & 技能</h3>
+      <h3 style="font-family:'Noto Serif TC',serif;font-size:20px;font-weight:700;margin-bottom:24px;">證照 &amp; 技能</h3>
       <div class="cert-grid">
-        <div class="cert-item">
-          <div class="cert-name">ORACLE-JAVA</div>
-          <div class="cert-type">CERTIFICATION</div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-name">ERP 規劃師</div>
-          <div class="cert-type">CERTIFICATION</div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-name">ERP 系統操作</div>
-          <div class="cert-type">PROFESSIONAL SKILL</div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-name">系統維護管理</div>
-          <div class="cert-type">PROFESSIONAL SKILL</div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-name">前端開發</div>
-          <div class="cert-type">TECH SKILL</div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-name">LINE Bot / GPT API</div>
-          <div class="cert-type">RESEARCH SKILL</div>
-        </div>
+        <div class="cert-item"><div class="cert-name">ORACLE-JAVA</div><div class="cert-type">CERTIFICATION</div></div>
+        <div class="cert-item"><div class="cert-name">ERP 規劃師</div><div class="cert-type">CERTIFICATION</div></div>
+        <div class="cert-item"><div class="cert-name">ERP 系統操作</div><div class="cert-type">PROFESSIONAL SKILL</div></div>
+        <div class="cert-item"><div class="cert-name">系統維護管理</div><div class="cert-type">PROFESSIONAL SKILL</div></div>
+        <div class="cert-item"><div class="cert-name">前端開發</div><div class="cert-type">TECH SKILL</div></div>
+        <div class="cert-item"><div class="cert-name">LINE Bot / GPT API</div><div class="cert-type">RESEARCH SKILL</div></div>
       </div>
-
-      <h3 style="font-family: 'Noto Serif TC', serif; font-size: 20px; font-weight: 700; margin-top: 36px; margin-bottom: 20px;">語言能力</h3>
-      <div style="display: flex; flex-direction: column; gap: 12px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border: 1px solid var(--border); background: var(--paper);">
-          <span style="font-weight: 600; font-size: 14px;">中文（繁體 ＆ 簡體）</span>
-          <span style="font-family: 'Space Mono', monospace; font-size: 11px; color: var(--teal);">NATIVE</span>
+      <h3 style="font-family:'Noto Serif TC',serif;font-size:20px;font-weight:700;margin-top:36px;margin-bottom:20px;">語言能力</h3>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border:1px solid var(--border);background:var(--paper);">
+          <span style="font-weight:600;font-size:14px;">中文（繁體 &amp; 簡體）</span>
+          <span style="font-family:'Space Mono',monospace;font-size:11px;color:var(--teal);">NATIVE</span>
         </div>
-        <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border: 1px solid var(--border); background: var(--paper);">
-          <span style="font-weight: 600; font-size: 14px;">英文</span>
-          <span style="font-family: 'Space Mono', monospace; font-size: 11px; color: var(--teal);">WORKING</span>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border:1px solid var(--border);background:var(--paper);">
+          <span style="font-weight:600;font-size:14px;">英文</span>
+          <span style="font-family:'Space Mono',monospace;font-size:11px;color:var(--teal);">WORKING</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="contact-section">
+<section id="contact">
   <div class="section-header">
     <span class="section-num">06</span>
     <h2 class="section-title">聯絡我</h2>
@@ -1087,42 +378,31 @@
   <div class="contact-inner">
     <div>
       <h3 class="contact-big">讓我們<br><span>開始對話</span></h3>
-      <p style="font-size: 14px; color: var(--muted); line-height: 1.8; margin-top: 24px; max-width: 360px;">
-        無論是工作機會、研究合作或只是想交流，都歡迎透過以下方式聯繫我。
-      </p>
+      <p style="font-size:14px;color:var(--muted);line-height:1.8;margin-top:24px;max-width:360px;">無論是工作機會、研究合作或只是想交流，都歡迎透過 email 聯繫我。</p>
     </div>
     <div class="contact-items">
-
-      <a href="/cdn-cgi/l/email-protection#e691d4d6d6d0d6d4d4d0a6818b878f8ac885898b" class="contact-item">
-        <div class="contact-icon">✉</div>
+      <div class="contact-item">
+        <div class="contact-icon">&#9993;</div>
         <div>
           <div class="contact-label">EMAIL</div>
-          <div class="contact-value"><span class="__cf_email__" data-cfemail="5a2d686a6a6c6a68686c1a3d373b333674393537">[email&#160;protected]</span></div>
+          <div class="contact-value">w20060226&#64;gmail&#46;com</div>
         </div>
-      </a>
-
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <span>© 2025 鍾爾晉 · CHUNG ER-JIN</span>
-  <span>TAINAN · TAIWAN</span>
+  <span>&#169; 2025 鍾爾晋 &middot; CHUNG ERH CHIN</span>
+  <span>TAINAN &middot; TAIWAN</span>
   <span>BUILT WITH INTENTION</span>
 </footer>
 
 <script>
-  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(el => {
-      if (el.isIntersecting) el.target.classList.add('visible');
-    });
+    entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
   }, { threshold: 0.1 });
-
-  document.querySelectorAll('.timeline-item, .strength-card').forEach(el => {
-    observer.observe(el);
-  });
+  document.querySelectorAll('.timeline-item, .strength-card').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
